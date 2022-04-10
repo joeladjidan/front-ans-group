@@ -1,0 +1,43 @@
+<div class="container my-container">
+  <div class="card justify-content-md-center">
+    <div class="logo card-header text-center">
+      <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <div class="logo-image-small">
+          <img [ngStyle]="{'width': '80px' , 'height': '80px'}" src="assets/img/angular2-logo.png">
+          <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+            ANSGROUP
+          </a>
+        </div>
+      </a>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          {{errorMessage}}
+        </div>
+        <div class="mb-3">
+          <input type="email" formControlName="email" placeholder="E-mail" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input type="password" formControlName="password" placeholder="Mot de passe" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Mot de passe est obligatoire</div>
+          </div>
+        </div>
+        <div class="mb-3 d-flex justify-content-between">
+          <a  class="btn btn-link">S'inscrire</a>
+          <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            <i class="fas fa-check"></i>&nbsp;Se connecter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
